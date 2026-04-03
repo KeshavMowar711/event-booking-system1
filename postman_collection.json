@@ -1,0 +1,58 @@
+{
+	"info": {
+		"name": "Event Booking API - Lattice Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List All Events",
+			"request": {
+				"method": "GET",
+				"url": "http://localhost:3000/api/events"
+			}
+		},
+		{
+			"name": "Create Event",
+			"request": {
+				"method": "POST",
+				"header": [{"key": "Content-Type", "value": "application/json"}],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Lattice Workshop\",\n  \"description\": \"Selection test event\",\n  \"date\": \"2026-04-10 10:00:00\",\n  \"total_tickets\": 50\n}"
+				},
+				"url": "http://localhost:3000/api/events"
+			}
+		},
+		{
+			"name": "Book Ticket",
+			"request": {
+				"method": "POST",
+				"header": [{"key": "Content-Type", "value": "application/json"}],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"event_id\": 1,\n  \"user_id\": 711,\n  \"tickets_requested\": 2\n}"
+				},
+				"url": "http://localhost:3000/api/bookings"
+			}
+		},
+		{
+			"name": "User Booking History",
+			"request": {
+				"method": "GET",
+				"url": "http://localhost:3000/api/users/711/bookings"
+			}
+		},
+		{
+			"name": "Attendance Check",
+			"request": {
+				"method": "POST",
+				"header": [{"key": "Content-Type", "value": "application/json"}],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"code\": \"BK-XXXXXX\"\n}"
+				},
+				"url": "http://localhost:3000/api/events/1/attendance"
+			}
+		}
+	]
+}
